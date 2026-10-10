@@ -48,6 +48,10 @@ React 18 + Vite。正文字体是[霞鹜文楷屏幕阅读版](https://github.co
 所有正文都在 `src/content/chN.js`，一章一个文件，结构和写作规范见 [CONTENT_GUIDE.md](CONTENT_GUIDE.md)。
 立场报告的问题和倾向在 `src/content/report.js`。想加一章、改一段、补一条“翻旧账”，只需要改这些数据文件。
 
+## 致谢
+
+感谢 [LINUX DO](https://linux.do) 社区。
+
 ## License
 
 代码 MIT；正文 CC BY-NC-SA 4.0。
