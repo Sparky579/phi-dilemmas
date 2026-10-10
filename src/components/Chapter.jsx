@@ -22,6 +22,31 @@ function OptionCard({ o, picked, faded, onPick }) {
   )
 }
 
+function Chain({ c }) {
+  return (
+    <div className="chain">
+      {c.title && <p className="chain-title">{c.title}</p>}
+      <ol className="chain-steps">
+        {c.steps.map((st, i) => (
+          <li key={i} className={'chain-step' + (st.k?.startsWith('C') || st.k === '所以' ? ' concl' : '')}>
+            <span className="chain-k">{st.k}</span>
+            <div className="chain-body">
+              <p><Inline text={st.t} /></p>
+              {st.weak && (
+                <p className="chain-weak">
+                  <span>常被攻击</span>
+                  <Inline text={st.weak} />
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+      {c.note && <p className="chain-note"><Inline text={c.note} /></p>}
+    </div>
+  )
+}
+
 function School({ s }) {
   return (
     <div className="school">
@@ -39,6 +64,35 @@ function School({ s }) {
           <p><Inline text={s.cannot} /></p>
         </div>
       </div>
+      {s.implies?.length > 0 && (
+        <div className="school-more">
+          <p className="school-more-h">顺着推下去，它还会说</p>
+          <ul>
+            {s.implies.map((t, i) => (
+              <li key={i}><Inline text={t} /></li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {s.attacks?.length > 0 && (
+        <div className="school-more attacks">
+          <p className="school-more-h">可能被打的点</p>
+          <ul>
+            {s.attacks.map((a, i) => (
+              <li key={i}>
+                {a.who && <span className="atk-who">{a.who}：</span>}
+                <Inline text={a.t} />
+                {a.reply && (
+                  <span className="atk-reply">
+                    <b>可能的回应</b>
+                    <Inline text={a.reply} />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }
@@ -166,6 +220,7 @@ export default function Chapter({ ch, go, store }) {
                 <div className="prose">
                   <Paras list={s.body} />
                 </div>
+                {s.chain && <Chain c={s.chain} />}
                 {s.schools?.map((sc, j) => <School s={sc} key={j} />)}
                 {s.aside && (
                   <aside className="aside">

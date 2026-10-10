@@ -1146,3 +1146,137 @@ main {
     padding-top: 8vh;
   }
 }
+
+/* ---------- 论证链 ---------- */
+.chain {
+  margin: 20px 0;
+  padding: 18px 20px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  background: var(--card);
+}
+.chain-title {
+  margin: 0 0 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+}
+.chain-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.chain-step {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  padding-bottom: 12px;
+}
+.chain-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 30px;
+  bottom: 2px;
+  width: 1px;
+  background: var(--rule);
+}
+.chain-k {
+  flex: none;
+  min-width: 31px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 7px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  font-family: Georgia, var(--sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+.chain-step.concl .chain-k {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.chain-step.concl .chain-body > p:first-child {
+  font-weight: 700;
+}
+.chain-body {
+  min-width: 0;
+}
+.chain-body p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.75;
+}
+.chain-weak {
+  margin-top: 6px !important;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  font-size: 0.88em !important;
+  color: var(--ink-2);
+}
+.chain-weak span {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--accent);
+  margin-right: 6px;
+  letter-spacing: 0.06em;
+}
+.chain-note {
+  margin: 4px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.9em;
+  color: var(--ink-2);
+}
+
+/* ---------- 流派卡的延伸 ---------- */
+.school-more {
+  padding: 12px 18px 14px;
+  border-top: 1px solid var(--rule);
+}
+.school-more-h {
+  margin: 0 0 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--green);
+}
+.school-more.attacks .school-more-h {
+  color: var(--accent);
+}
+.school-more ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.school-more li {
+  font-size: 0.92em;
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+.school-more li:last-child {
+  margin-bottom: 0;
+}
+.atk-who {
+  font-weight: 700;
+}
+.atk-reply {
+  display: block;
+  margin-top: 4px;
+  padding-left: 10px;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-2);
+}
+.atk-reply b {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  margin-right: 6px;
+}
