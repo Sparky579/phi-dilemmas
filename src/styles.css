@@ -1303,3 +1303,63 @@ main {
   border-radius: 16px;
   background: var(--green-soft);
 }
+
+/* ---------- 流派卡的展开按钮 ---------- */
+.school-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--rule);
+}
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.st-btn.imp:hover,
+.st-btn.imp.on {
+  border-color: var(--green);
+  color: var(--green);
+}
+.st-btn.atk:hover,
+.st-btn.atk.on {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.st-btn.imp.on {
+  background: var(--green-soft);
+}
+.st-btn.atk.on {
+  background: var(--accent-soft);
+}
+.st-n {
+  font-size: 11px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: inline-grid;
+  place-items: center;
+  background: var(--paper-2);
+  color: var(--ink-3);
+}
+.st-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+.st-btn.on .st-arrow {
+  transform: rotate(180deg);
+}
+.school-toggles + .school-more {
+  border-top: 0;
+  padding-top: 0;
+  animation: rise 0.25s ease both;
+}

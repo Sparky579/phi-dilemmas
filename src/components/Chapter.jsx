@@ -48,6 +48,8 @@ function Chain({ c }) {
 }
 
 function School({ s }) {
+  const [open, setOpen] = useState(null)
+  const toggle = (k) => setOpen((o) => (o === k ? null : k))
   return (
     <div className="school">
       <div className="school-head">
@@ -64,9 +66,24 @@ function School({ s }) {
           <p><Inline text={s.cannot} /></p>
         </div>
       </div>
-      {s.implies?.length > 0 && (
+      {(s.implies?.length > 0 || s.attacks?.length > 0) && (
+        <div className="school-toggles">
+          {s.implies?.length > 0 && (
+            <button className={'st-btn imp' + (open === 'imp' ? ' on' : '')} onClick={() => toggle('imp')} aria-expanded={open === 'imp'}>
+              顺着推下去，它还会说 <span className="st-n">{s.implies.length}</span>
+              <span className="st-arrow">▾</span>
+            </button>
+          )}
+          {s.attacks?.length > 0 && (
+            <button className={'st-btn atk' + (open === 'atk' ? ' on' : '')} onClick={() => toggle('atk')} aria-expanded={open === 'atk'}>
+              可能被打的点 <span className="st-n">{s.attacks.length}</span>
+              <span className="st-arrow">▾</span>
+            </button>
+          )}
+        </div>
+      )}
+      {open === 'imp' && (
         <div className="school-more">
-          <p className="school-more-h">顺着推下去，它还会说</p>
           <ul>
             {s.implies.map((t, i) => (
               <li key={i}><Inline text={t} /></li>
@@ -74,9 +91,8 @@ function School({ s }) {
           </ul>
         </div>
       )}
-      {s.attacks?.length > 0 && (
+      {open === 'atk' && (
         <div className="school-more attacks">
-          <p className="school-more-h">可能被打的点</p>
           <ul>
             {s.attacks.map((a, i) => (
               <li key={i}>
