@@ -1280,3 +1280,26 @@ main {
   color: var(--ink-3);
   margin-right: 6px;
 }
+
+/* ---------- 报告收尾 ---------- */
+.epilogue {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 2px solid var(--ink);
+}
+.epilogue-kicker {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin: 0;
+}
+.epi-sec .report-h {
+  margin-top: 32px;
+}
+.epi-sec:last-child {
+  padding: 4px 24px 8px;
+  margin-top: 40px;
+  border-radius: 16px;
+  background: var(--green-soft);
+}

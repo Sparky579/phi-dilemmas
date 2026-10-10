@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { chapters, byId, optionOf, matches } from '../content/index.js'
-import { perChoice, combos, axes } from '../content/report.js'
-import { Inline } from './Text.jsx'
+import { perChoice, combos, axes, epilogue } from '../content/report.js'
+import { Inline, Paras } from './Text.jsx'
 import { tierOf } from './Dice.jsx'
 
 function axisScore(axis, choices) {
@@ -174,14 +174,16 @@ export default function Report({ go, store }) {
         ))}
       </ol>
 
-      <div className="coda">
-        <p>
-          第0章说，遇到不想要的结论只有三条路：认了，放弃一个前提，或者找一个新的区分。现在你手里有一份自己签的合同，上面也许有几处条款互相打架。
-        </p>
-        <p>
-          这不丢人。苏格拉底在街上拦住人问问题，问到最后，对方几乎总会发现自己的看法彼此冲突。他没有因此瞧不起谁，他觉得这正是开始想事情的地方。
-        </p>
-        <p>你可以过一段时间再回来，重新选一遍，看看哪几题你换了边。</p>
+      <div className="epilogue">
+        <p className="epilogue-kicker">合上书之前</p>
+        {epilogue.map((sec, k) => (
+          <section className="epi-sec" key={k}>
+            <h2 className="report-h">{sec.title}</h2>
+            <div className="prose">
+              <Paras list={sec.body} />
+            </div>
+          </section>
+        ))}
       </div>
 
       <div className="report-actions">
